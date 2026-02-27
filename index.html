@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Event</title>
+  <title>PAGEANT @ HANGAR 1819</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -22,16 +22,21 @@
       overflow: hidden;
     }
 
-    /* Background video */
-    video {
+    /* Desktop Video */
+    .video-desktop {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      object-position: center center;
+      transform: translate(-50%, -50%);
       z-index: -1;
+    }
+
+    /* Mobile Video */
+    .video-mobile {
+      display: none;
     }
 
     /* Dark overlay */
@@ -72,9 +77,26 @@
       color: black;
     }
 
-    @media (max-width: 600px) {
+    /* Responsive for smaller screens */
+    @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
+      }
+
+      .video-desktop {
+        display: none; /* hide desktop video */
+      }
+
+      .video-mobile {
+        display: block; /* show mobile video */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        z-index: -1;
       }
     }
   </style>
@@ -82,9 +104,14 @@
 
 <body>
 
-  <!-- Video Background -->
-  <video autoplay muted loop playsinline>
-    <source src="background.mp4" type="video/mp4">
+  <!-- Desktop Video -->
+  <video class="video-desktop" autoplay muted loop playsinline>
+    <source src="https://ddl098.github.io/event-landing/background-desktop.mp4?v=3" type="video/mp4">
+  </video>
+
+  <!-- Mobile Video -->
+  <video class="video-mobile" autoplay muted loop playsinline>
+    <source src="https://ddl098.github.io/event-landing/background-mobile.mp4?v=3" type="video/mp4">
   </video>
 
   <div class="overlay"></div>
